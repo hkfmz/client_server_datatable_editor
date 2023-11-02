@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
+    <link rel="stylesheet" href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css">
+
+    <link rel="shortcut icon" href="Editor-2.2.2/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Tâche</th>
+                <th>Etat</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+    <script src="Editor-2.2.2/js/dataTables.editor.js"></script>
+    <script src="js/client.js"></script>
+
+    <!-- <script>
+            let todo = {};
+
+                if (localStorage.getItem('todo')) {
+                    todo = JSON.parse(localStorage.getItem('todo'));
+                }
+
+                const editor = new DataTable.Editor({
+                    table: '#example',
+                    fields: [{
+                        label: 'Élément :',
+                        name: 'item'
+                    }, {
+                        label: 'Statut :',
+                        name: 'status',
+                        type: 'radio',
+                        def: 'À faire',
+                        options: ['À faire', 'Terminé']
+                    }],
+
+                    ajax: function (méthode, url, d, callbackSuccès, callbackErreur) {
+                        let sortie = {
+                            data: []
+                        };
+
+                        if (d.action === 'create') {
+                            let dateKey = +new Date();
+
+                            for (const [cle, valeur] of Object.entries(d.data)) {
+                                let id = dateKey + '' + cle;
+
+                                valeur.DT_RowId = id;
+                                todo[id] = valeur;
+                                sortie.data.push(valeur);
+                            }
+                        }
+
+                        else if (d.action === 'edit') {
+                            for (const [id, valeur] of Object.entries(d.data)) {
+                                valeur.DT_RowId = id;
+                                Object.assign(todo[id], valeur);
+                                sortie.data.push(todo[id]);
+                            }
+                        }
+
+                        else if (d.action === 'remove') {
+                            for (const id of Object.keys(d.data)) {
+                                delete todo[id];
+                            }
+                        }
+
+                        localStorage.setItem('todo', JSON.stringify(todo));
+                        callbackSuccès(sortie);
+                    }
+                });
+
+                new DataTable('#example', {
+                    buttons: [{
+                        extend: 'create',
+                        editor
+                    }, {
+                        extend: 'edit',
+                        editor
+                    }, {
+                        extend: 'remove',
+                        editor
+                    }],
+                    columns: [{
+                        data: 'item'
+                    }, {
+                        data: 'status'
+                    }],
+                    data: Object.values(todo),
+                    dom: 'Bfrtip',
+                    select: true
+                });
+
+    </script> -->
+</body>
+
+</html>
